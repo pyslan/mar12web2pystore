@@ -3,3 +3,5 @@
 # auth
 # mailer
 # crypto
+
+# views, ajax, css, appadmin
