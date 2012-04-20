@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.KeyError'> 'format'"
+p3
+sS'layer'
+p4
+S'c:\\Users\\rochacbruno\\aula7_mar12\\web2py\\applications\\loja\\controllers/produto.py'
+p5
+sS'code'
+p6
+S'# coding: utf-8\n\ndef exibir():\n    print "_" * 15\n    #idp = request.args[0].split(\'-\')[-1]\n    # db.produto[idp]\n    print request.args\n    print request.vars\n    return request.vars.referencia\n\n\ndef novo():\n    form = SQLFORM(Produto)\n    print Produto.format\n    return form\n\ndef novacategoria():\n    form = SQLFORM(Categoria)\n    message = "preencha o form"\n    if form.process().accepted:\n        message = "sucesso"\n    elif form.errors:\n        message = "erro"\n\n    return DIV(H1(message),BR(),form)\n\nresponse._vars=response._caller(novo)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "c:\\Users\\rochacbruno\\aula7_mar12\\web2py\\gluon\\restricted.py", line 205, in restricted\n    exec ccode in environment\n  File "c:\\Users\\rochacbruno\\aula7_mar12\\web2py\\applications\\loja\\controllers/produto.py", line 27, in <module>\n  File "c:\\Users\\rochacbruno\\aula7_mar12\\web2py\\gluon\\globals.py", line 173, in <lambda>\n    self._caller = lambda f: f()\n  File "c:\\Users\\rochacbruno\\aula7_mar12\\web2py\\applications\\loja\\controllers/produto.py", line 14, in novo\n    print Produto.format\n  File "c:\\Users\\rochacbruno\\aula7_mar12\\web2py\\gluon\\dal.py", line 6774, in __getattr__\n    return self[key]\n  File "c:\\Users\\rochacbruno\\aula7_mar12\\web2py\\gluon\\dal.py", line 6714, in __getitem__\n    return dict.__getitem__(self, str(key))\nKeyError: \'format\'\n'
+p11
+s.

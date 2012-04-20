@@ -1,0 +1,235 @@
+timestamp: 2012-04-19T20:38:21.163000
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512),
+    cliente_especial CHAR(1)
+);
+success!
+timestamp: 2012-04-19T20:38:21.291000
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-04-19T20:38:21.457000
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-04-19T20:38:21.589000
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2012-04-19T20:38:21.793000
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-04-19T20:38:22.007000
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2012-04-19T20:39:47.931000
+ALTER TABLE auth_user ADD bloqueado CHAR(1);
+timestamp: 2012-04-19T21:25:07.505000
+CREATE TABLE categoria(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome CHAR(512) NOT NULL,
+    descricao TEXT,
+    foto CHAR(512)
+);
+success!
+timestamp: 2012-04-19T21:29:00.371000
+CREATE TABLE produto(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    categoria INTEGER REFERENCES categoria(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-04-19T21:30:15.628000
+CREATE TABLE pedido(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    comprador INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-04-19T21:30:35.671000
+CREATE TABLE pedido_itens(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    pedido_id INTEGER REFERENCES pedido(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-04-19T21:30:35.846000
+CREATE TABLE endereco(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    cliente_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    cep CHAR(512),
+    pais CHAR(512),
+    estado CHAR(512),
+    cidade CHAR(512),
+    logradouro CHAR(512),
+    numero CHAR(512),
+    complemento CHAR(512)
+);
+success!
+timestamp: 2012-04-19T21:32:19.449000
+ALTER TABLE produto ADD name CHAR(512);
+timestamp: 2012-04-19T21:34:26.968000
+ALTER TABLE produto ADD sku CHAR(512) UNIQUE;
+timestamp: 2012-04-19T21:35:22.696000
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512),
+    cliente_especial CHAR(1),
+    bloqueado CHAR(1)
+);
+success!
+timestamp: 2012-04-19T21:35:22.915000
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-04-19T21:35:23.068000
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-04-19T21:35:23.236000
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2012-04-19T21:35:23.435000
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-04-19T21:35:23.612000
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2012-04-19T21:35:23.779000
+CREATE TABLE categoria(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome CHAR(512) NOT NULL,
+    descricao TEXT,
+    foto CHAR(512)
+);
+success!
+timestamp: 2012-04-19T21:35:23.948000
+CREATE TABLE produto(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    categoria INTEGER REFERENCES categoria(id) ON DELETE CASCADE,
+    name CHAR(512) NOT NULL,
+    SKU CHAR(512) UNIQUE
+);
+success!
+timestamp: 2012-04-19T21:35:24.066000
+CREATE TABLE pedido(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    comprador INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-04-19T21:35:24.179000
+CREATE TABLE pedido_itens(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    pedido_id INTEGER REFERENCES pedido(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-04-19T21:35:24.297000
+CREATE TABLE endereco(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    cliente_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    cep CHAR(512),
+    pais CHAR(512),
+    estado CHAR(512),
+    cidade CHAR(512),
+    logradouro CHAR(512),
+    numero CHAR(512),
+    complemento CHAR(512)
+);
+success!
+timestamp: 2012-04-19T21:40:28.160000
+ALTER TABLE produto ADD foto CHAR(512);
+timestamp: 2012-04-19T21:40:28.278000
+ALTER TABLE produto ADD estoque INTEGER;
+timestamp: 2012-04-19T21:40:28.360000
+ALTER TABLE produto ADD peso DOUBLE;
+timestamp: 2012-04-19T21:40:28.460000
+ALTER TABLE produto ADD email_enviado CHAR(1);
+timestamp: 2012-04-19T21:40:28.571000
+ALTER TABLE produto ADD preco DOUBLE;
+timestamp: 2012-04-19T21:40:28.681000
+ALTER TABLE produto ADD miniatura CHAR(512);
+timestamp: 2012-04-19T21:40:29.143000
+ALTER TABLE produto ADD destaque CHAR(1);
+timestamp: 2012-04-19T21:40:29.267000
+ALTER TABLE produto ADD descricao TEXT;
+timestamp: 2012-04-19T21:40:29.389000
+ALTER TABLE produto ADD quantidade_maxima INTEGER;
+timestamp: 2012-04-19T21:40:57.554000
+ALTER TABLE pedido ADD valor DOUBLE;
+timestamp: 2012-04-19T21:40:57.688000
+ALTER TABLE pedido ADD itens INTEGER;
+timestamp: 2012-04-19T21:40:57.800000
+ALTER TABLE pedido ADD enviar_para INTEGER REFERENCES endereco(id) ON DELETE CASCADE;
+timestamp: 2012-04-19T21:40:57.924000
+ALTER TABLE pedido ADD statuses CHAR(512);
+timestamp: 2012-04-19T21:42:02.322000
+ALTER TABLE pedido_itens ADD preco_atual DOUBLE;
+timestamp: 2012-04-19T21:42:02.482000
+ALTER TABLE pedido_itens ADD valor_total DOUBLE;
+timestamp: 2012-04-19T21:42:02.575000
+ALTER TABLE pedido_itens ADD quantidade INTEGER;
+timestamp: 2012-04-19T21:42:02.687000
+ALTER TABLE pedido_itens ADD produto_id INTEGER REFERENCES produto(id) ON DELETE CASCADE;
+timestamp: 2012-04-19T21:45:48.659000
+ALTER TABLE produto ADD data_cadastro TIMESTAMP;

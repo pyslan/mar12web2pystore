@@ -7,26 +7,33 @@
 # Virtual, Lazy field
 # validator (quantidade maxima por item)
 
+import datetime
+
 Categoria = db.define_table("categoria",
-        Field("nome", "string"),
+        # Field("cod", "id")
+        Field("nome", "string", notnull=True),
         Field("descricao", "text"),
-        Field("foto", "upload"),
-        Field("%(nome)s"),
+        Field("foto", "upload"), # caminho
+        format="- %(nome)s -",
+        migrate=True,
+        #primarykey=["cod"]
     )
 
 Produto = db.define_table("produto",
         Field("categoria", "reference categoria"),
-        Field("name"),
+        Field("name", notnull=True),
+        Field("SKU", unique=True, required=True),
         Field("descricao", "text"),
-        Field("peso", "double"),
-        Field("preco", "decimal"),
+        Field("peso", "double"), #float
+        Field("preco", "double"), # Decimal
         Field("estoque", "integer"),
         Field("foto", "upload"),
-        Field("miniatura", "upload"), # T / F
-        Field("destaque", "boolean", default=False),
+        Field("miniatura", "upload"), # thumbnail
+        Field("destaque", "boolean", default=False), # T / F
         Field("email_enviado", "boolean", default=False),
         Field("quantidade_maxima", "integer", default=5),
-        format = lambda row: "%(nome)s" % row
+        Field("data_cadastro", "datetime", default=datetime.datetime.now())
+        #format = lambda row: "%(nome)s" % row
     )
 
 # virtual peso total e preco total
@@ -34,17 +41,17 @@ Produto = db.define_table("produto",
 Pedido = db.define_table("pedido",
         Field("comprador", "reference auth_user"),
         Field("itens", "integer"),
-        Field("valor", "decimal"),
-        Field("enviar_para", "reference enderecos")
-        Field("status"),
+        Field("valor", "double"),
+        Field("enviar_para", "reference endereco"),
+        Field("statuses"),
     )
 
 PedidoItens = db.define_table("pedido_itens",
         Field("pedido_id", "reference pedido"),
-        Field("produto_id", Produto), # db.pedido
+        Field("produto_id", "reference produto"), # db.pedido
         Field("quantidade", "integer"),
-        Field("preco_atual", "decimal"),
-        Field("valor_total", "decimal"),
+        Field("preco_atual", "double"),
+        Field("valor_total", "double"),
     )
 
 Endereco = db.define_table("endereco",
