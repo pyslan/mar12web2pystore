@@ -1,6 +1,11 @@
 # coding: utf-8
 
 from gluon import current
+# current.session, request, cache
+# db.commit(), db.rollback()
+# from gluon.dal import Field
+# from gluon.html import DIV
+# from gluon.sqlhtml import SQLFORM
 
 def THUMBER(image, nx=120, ny=120, name='thumb'):
     if image:

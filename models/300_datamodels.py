@@ -21,10 +21,12 @@ Categoria = db.define_table("categoria",
 
 Produto = db.define_table("produto",
         Field("categoria", "reference categoria"),
+        Field("subcategorias", "list:reference categoria"),
         Field("name", notnull=True),
         Field("SKU", unique=True, required=True),
         Field("descricao", "text"),
         Field("peso", "double"), #float
+        Field("pesototal", "double"), #compute
         Field("preco", "double"), # Decimal
         Field("estoque", "integer"),
         Field("foto", "upload"),

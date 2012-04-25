@@ -233,3 +233,7 @@ timestamp: 2012-04-19T21:42:02.687000
 ALTER TABLE pedido_itens ADD produto_id INTEGER REFERENCES produto(id) ON DELETE CASCADE;
 timestamp: 2012-04-19T21:45:48.659000
 ALTER TABLE produto ADD data_cadastro TIMESTAMP;
+timestamp: 2012-04-24T21:37:57.837000
+ALTER TABLE produto ADD subcategorias TEXT;
+timestamp: 2012-04-24T21:48:28.834000
+ALTER TABLE produto ADD pesototal DOUBLE;

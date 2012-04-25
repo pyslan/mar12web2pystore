@@ -30,3 +30,18 @@ class VALIDA_SKU(object):
 Produto.SKU.requires = VALIDA_SKU()
 Produto.descricao.requires=IS_NOT_EMPTY(error_message="informe uma descricao")
 Produto.peso.requires=IS_NOT_EMPTY(error_message="informe um peso")
+Produto.subcategorias.widget = SQLFORM.widgets.checkboxes.widget
+
+
+# computations
+
+def calcula_peso_total(row):
+    return row.peso * row.estoque
+
+
+Produto.pesototal.compute = lambda row: calcula_peso_total(row)
+
+from images import THUMBER
+
+Produto.miniatura.requires = [IS_IMAGE(), IS_LENGTH(1048576, 1024)]
+Produto.miniatura.compute = lambda row: THUMBER(row.foto)
