@@ -1,0 +1,19 @@
+{{extend 'meulayout.html'}}
+
+{{block menu}}
+
+ {{super}}
+
+ <ul>
+  <li>fdfdf</li>
+ </ul>
+
+{{end}}
+
+
+{{for produto in produtos:}}
+
+{{=produto.name}}
+
+{{=produto.categoria.nome}}
+{{pass}}

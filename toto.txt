@@ -1,0 +1,29 @@
+####
+
+
+# render  rss
+
+
+# formularios
+# SQLFORM, factory, HTML puro e CRUD
+# grid (exemplo) *
+
+# ajax e components
+
+# plugin e twitter api
+
+# Envio de emails / template rendering
+# background task queue
+
+# webservices com XMLRPC e JSONRPC, SOA
+
+# Auth básica
+# cache e cache na DAL
+# Deploy
+
+# internacionalizacao
+
+# appadmin
+*** video sobre PDF ***
+*** scheduler ***
+*** websockets ***

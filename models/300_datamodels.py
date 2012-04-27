@@ -1,12 +1,5 @@
 # coding: utf-8
 
-# id criado obrigatoriamente
-# format
-# notnull, unique, default
-# compute, represent, widget, writable, readable
-# Virtual, Lazy field
-# validator (quantidade maxima por item)
-
 import datetime
 
 Categoria = db.define_table("categoria",

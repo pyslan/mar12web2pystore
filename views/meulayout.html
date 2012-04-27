@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>Minha Loja</title>
+
+    {{include "web2py_ajax.html"}}
+  </head>
+  <body>
+    <header>
+    MINHA LOJA DE PRODUTOS
+    <img src="{{=URL('static', 'images', args='logo.jpg')}}">
+
+    {{block menu}}
+    <div id="menu">
+       {{=UL(*[LI(A(item["texto"], _href=item['url'])) for item in MEU_MENU])}}
+    </div>
+    {{end}}
+
+    </header>
+
+    {{block container}}
+    <div id="container">
+        {{include}}
+    </div>
+    {{end}}
+
+   {{if response.footer_enabled:}}
+        {{block footer}}
+        <footer>
+        COPYRIGHT
+        </footer>
+        {{end}}
+   {{pass}}
+  </body>
+</html>

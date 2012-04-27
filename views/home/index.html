@@ -1,4 +1,17 @@
+{{extend 'bootstrap.html'}}
+<h1> Minha Loja</h1>
 
-<h1> MInha Loja</h1>
+{{include 'propaganda.html'}}
+{{include 'vitrine.html'}}
 
+{{block destaque}}
+<div class="hero-unit">
+<h1>Produtos em destaque</h1>
+  {{vitrine(destaques, "span4", 200)}}
+</div>
+{{end}}
+
+<h1>Produtos</h1>
+
+{{vitrine(produtos)}}
 

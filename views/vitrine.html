@@ -1,0 +1,18 @@
+{{def vitrine(produtos, tamanho="span2" , width=120):}}
+
+    <ul class="thumbnails">
+    {{for produto in produtos:}}
+        <li class="{{=tamanho}}">
+        <div class="thumbnail">
+            <img width={{=width}} src="{{=URL('home', 'download', args=produto.miniatura)}}" alt="">
+            <h5>{{=produto.name}} - {{=produto.categoria.nome}}</h5>
+            <h5>{{="R$ %.2f" % float(produto.preco)}}</h5>
+            <p>{{=produto.descricao}}</p>
+            <button class="btn btn-primary">Add to cart</button>
+        </div>
+        </li>
+    {{pass}}
+
+    </ul>
+
+{{return}}

@@ -28,3 +28,12 @@ db.auth_user.first_name.label = "Seu Primeiro Nome"
 db.auth_user.first_name.comment = "Coloque seu nome"
 
 # views, ajax, css, appadmin, languages
+
+# generic
+
+response.generic_patterns = ['*'] if request.is_local else ["*categoria.json"] # em tempo de desenvolvimento
+#response.generic_views = ["minhafuncao.json"]
+
+# auth.user.id
+response.footer_enabled = True
+response.destaque_enabled = True
