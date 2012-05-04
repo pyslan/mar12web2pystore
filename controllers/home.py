@@ -6,7 +6,14 @@ def index():
     # destaques = resultado.find(lambda row: row.destaque == True)
 
     #otimizada
-    produtos = db(Produto).select()
+    query = Produto.id>0
+
+    offset = 0
+    limit = 30
+
+    produtos = db(query).select(limitby=(offset, limit),
+                                orderby=~Produto.data_cadastro)
+
     destaques = produtos.exclude(lambda row: row.destaque == True)
 
     return dict(produtos=produtos, destaques=destaques)

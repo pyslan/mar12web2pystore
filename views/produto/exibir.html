@@ -1,0 +1,31 @@
+{{extend 'bootstrap.html'}}
+
+<div class="container">
+   <div class="row">
+      <div class="span6">
+         <img src="{{=URL('home', 'download', args=produto.foto)}}" alt="">
+      </div>
+      <div class="span6">
+         <h1>{{=produto.name}}</h1>
+         <h2>{{=produto.categoria.nome}}</h2>
+         <hr>
+         <span class="label label-info" style="font-size:30px !important;">{{="R$ %.2f" % float(produto.preco)}}</span>
+
+         <form method="POST" action="{{=URL('produto','adicionar_ao_carrinho')}}">
+           <label for="quantidade">{{=T('Quantity')}}</label>
+           <input type="text" id="quantidade" name="quantidade" value="1">
+           {{=SELECT(*cores, _id="cor")}}
+           <input type="hidden" id="idproduto" name="idproduto" value="{{=produto.id}}">
+           <button>{{=T('add to cart')}}</button>
+         </form>
+
+        <hr>
+
+
+      </div>
+
+   </div>
+
+   <div class="row">
+   </div>
+</div>

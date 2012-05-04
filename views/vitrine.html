@@ -8,7 +8,7 @@
             <h5>{{=produto.name}} - {{=produto.categoria.nome}}</h5>
             <h5>{{="R$ %.2f" % float(produto.preco)}}</h5>
             <p>{{=produto.descricao}}</p>
-            <button class="btn btn-primary">Add to cart</button>
+            <a href="{{=URL('produto', 'exibir', args=[produto.id, produto.slug()])}}" class="btn btn-primary">{{=T("View details")}}</a>
         </div>
         </li>
     {{pass}}

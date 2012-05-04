@@ -1,9 +1,6 @@
 ####
 
 
-# render  rss
-
-
 # formularios
 # SQLFORM, factory, HTML puro e CRUD
 # grid (exemplo) *

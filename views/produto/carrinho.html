@@ -1,0 +1,33 @@
+{{extend 'bootstrap.html'}}
+
+
+ {{block destaque}}
+  <div class="hero-unit">
+            <h1>Seu carrinho de compras</h1>
+
+
+    <table>
+    {{for item in session.carrinho:}}
+     <tr>
+       <td><img width=50 src="{{=URL('home', 'download', args=item['miniatura'])}}" alt=""></td>
+       <td>{{=item['nome']}}</td>
+       <td>{{=item['preco']}}</td>
+       <td>{{=item['quantidade']}}</td>
+       <td>{{=formata_valor(item['total'])}}</td>
+       <td> <button data-url="{{=URL('remover_do_carrinho')}}" data-id="{{=item['id']}}" class="btn btn-danger">Remover</button> </td>
+     </tr>
+    {{pass}}
+    </table>
+
+ </div>
+ {{end}}
+
+<div class="container">
+   <div class="row">
+
+
+   </div>
+
+   <div class="row">
+   </div>
+</div>

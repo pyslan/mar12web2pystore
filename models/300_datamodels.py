@@ -33,6 +33,8 @@ Produto = db.define_table("produto",
 
 # virtual peso total e preco total
 
+Produto.slug = Field.Lazy(lambda row: IS_SLUG()(row.produto.name)[0])
+
 Pedido = db.define_table("pedido",
         Field("comprador", "reference auth_user"),
         Field("itens", "integer"),
