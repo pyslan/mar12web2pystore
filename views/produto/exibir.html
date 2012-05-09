@@ -10,7 +10,7 @@
          <h2>{{=produto.categoria.nome}}</h2>
          <hr>
          <span class="label label-info" style="font-size:30px !important;">{{="R$ %.2f" % float(produto.preco)}}</span>
-
+        <hr>
          <form method="POST" action="{{=URL('produto','adicionar_ao_carrinho')}}">
            <label for="quantidade">{{=T('Quantity')}}</label>
            <input type="text" id="quantidade" name="quantidade" value="1">
@@ -27,5 +27,14 @@
    </div>
 
    <div class="row">
+     <div class="span6">
+        <hr>
+        {{=XML(produto.descricao, sanitize=True)}}
+     </div>
+    <div class="span6">
+       <h1>Twitter</h1>
+       {{=LOAD('plugin_twitter','get_tweets.load', vars=dict(produto=produto.name), ajax=True)}}
+
+     </div>
    </div>
 </div>

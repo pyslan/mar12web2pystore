@@ -41,6 +41,17 @@
               <li><a href="#contact">Contact</a></li>
               <li><a href="{{=URL('produto','carrinho')}}">Carrinho</a></li>
             </ul>
+
+            <form action="{{=URL('produto','search')}}" class="navbar-search pull-left">
+
+            <select id="context" name="context" class="search-query">
+              <option value="all">all</option>
+              <option value="name">name</option>
+              <option value="descricao">descricao</option>
+            </select>
+            <input type="search" placeholder="serach here" class="search-query span2" id="q" name="q" />
+             <button class="search-query">{{=T("Search")}}</button>
+          </form>
           </div><!--/.nav-collapse -->
         </div>
       </div>

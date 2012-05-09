@@ -4,7 +4,13 @@
 # mailer
 # crypto
 
-from gluon.tools import Auth, Mail
+from gluon.tools import Auth, Mail, Service
+
+# class MyServiceHandler(Service):
+#     def windows_wpf(self, *args, **kwargs):
+#         pass
+
+service = Service()
 
 auth = Auth(db,
             hmac_key=Auth.get_or_create_key(),
@@ -23,6 +29,8 @@ auth.settings.extra_fields['auth_user'] = [Field("cliente_especial", "boolean", 
 # auth.settings.login_next = URL()
 
 auth.define_tables()
+
+#auth.settings.allow_basic = True
 
 db.auth_user.first_name.label = "Seu Primeiro Nome"
 db.auth_user.first_name.comment = "Coloque seu nome"
